@@ -1,0 +1,33 @@
+{% extends '_layouts/cp' %}
+{% set title = 'Page Statistics' %}
+
+{% block content %}
+    {% set stats = pageStatistics.all() %}
+    <div class="tableview">
+        <table class="data fullwidth">
+            <thead>
+            <tr>
+                <th scope="col">URL</th>
+                <th scope="col">Hit count</th>
+                <th scope="col">Crawler hit count</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for stat in stats %}
+                <tr data-id="77" tabindex="0">
+                    <td>
+                        {{ stat.url }}
+                        {% if stat.query is not empty %}
+                            ?{{ stat.query }}
+                        {% endif %}
+                    </td>
+                    <td>{{ stat.hitCount }}</td>
+                    <td>
+                        {{ stat.botHitCount }}
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
