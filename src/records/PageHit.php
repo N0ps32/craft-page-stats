@@ -5,20 +5,21 @@ namespace raeder\technology\craftstats\records;
 use craft\db\ActiveRecord;
 
 /**
- * Page stat record.
+ * Page hit record.
  *
  * @property integer $id
  * @property string $url
  * @property string $query
- * @property int $hitCount
- * @property int $botHitCount
- * @property string $userAgents
- * @property int $avgLoadTimeMs
+ * @property string $ua
+ * @property boolean $isMobile
+ * @property boolean $isBot
+ * @property boolean $processing
+ * @property integer $pageLoadMs
  * @property \DateTime $dateCreated
  * @property \DateTime $dateUpdated
  * @property string $uid
  */
-class PageStat extends ActiveRecord
+class PageHit extends ActiveRecord
 {
 
     /**
@@ -26,7 +27,7 @@ class PageStat extends ActiveRecord
      */
     public static function tableName(): string
     {
-        return '{{%craft_page_stats}}';
+        return '{{%craft_page_hit}}';
     }
 
 }

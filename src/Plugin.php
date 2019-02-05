@@ -44,6 +44,7 @@ class Plugin extends BasePlugin
         );
 
         if (Craft::$app->getRequest()->getIsSiteRequest()) {
+            $this->craftStats->startPerformanceTrace();
             (new RenderPageTemplateListener())->addListener();
         }
 
