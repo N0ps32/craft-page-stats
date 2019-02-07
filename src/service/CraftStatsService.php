@@ -35,6 +35,7 @@ class CraftStatsService extends Component
         $pageHit->isMobile = $this->isMobileRequest($agent);
         $pageHit->ua = $agent;
         $pageHit->pageLoadMs = (microtime(true) * 1000) - $this->startRequest;
+        $pageHit->urlHash = hash('sha256', $url . $query);
         $pageHit->insert();
     }
 

@@ -2,28 +2,24 @@
 {% set title = 'Page Statistics' %}
 
 {% block content %}
-    {% set stats = pageStatistics.all() %}
+    {% set stats = craft.pageStat.groupBy('urlHash').all() %}
     <div class="tableview">
         <table class="data fullwidth">
             <thead>
             <tr>
-                <th scope="col">URL</th>
-                <th scope="col">Hit count</th>
-                <th scope="col">Crawler hit count</th>
+                <th>URL</th>
             </tr>
             </thead>
             <tbody>
             {% for stat in stats %}
-                <tr data-id="77" tabindex="0">
+                <tr>
                     <td>
-                        {{ stat.url }}
-                        {% if stat.query is not empty %}
-                            ?{{ stat.query }}
-                        {% endif %}
-                    </td>
-                    <td>{{ stat.hitCount }}</td>
-                    <td>
-                        {{ stat.botHitCount }}
+                        <a href="{{ url('craft-page-stats/detail/' ~ stat.urlHash) }}">
+                            {{ stat.url }}
+                            {% if stat.query is not empty %}
+                                ?{{ stat.query }}
+                            {% endif %}
+                        </a>
                     </td>
                 </tr>
             {% endfor %}

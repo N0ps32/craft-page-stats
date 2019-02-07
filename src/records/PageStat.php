@@ -12,7 +12,9 @@ use craft\db\ActiveRecord;
  * @property string $query
  * @property int $hitCount
  * @property int $botHitCount
+ * @property int $mobileHitCount
  * @property string $userAgents
+ * @property string $urlHash
  * @property int $avgLoadTimeMs
  * @property \DateTime $dateCreated
  * @property \DateTime $dateUpdated

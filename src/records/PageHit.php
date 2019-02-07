@@ -13,7 +13,8 @@ use craft\db\ActiveRecord;
  * @property string $ua
  * @property boolean $isMobile
  * @property boolean $isBot
- * @property boolean $processing
+ * @property string $processingKey
+ * @property string $urlHash
  * @property integer $pageLoadMs
  * @property \DateTime $dateCreated
  * @property \DateTime $dateUpdated

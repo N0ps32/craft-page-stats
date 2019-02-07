@@ -19,8 +19,10 @@ class Install extends Migration
             'query' => $this->string(),
             'hitCount' => $this->integer(),
             'botHitCount' => $this->integer(),
+            'mobileHitCount' => $this->integer(),
             'avgLoadTimeMs' => $this->integer(),
             'userAgents' => $this->string(),
+            'urlHash' => $this->string(64)->null(),
             'dateCreated' => $this->dateTime(),
             'dateUpdated' => $this->dateTime(),
             'uid' => $this->string(),
@@ -32,12 +34,16 @@ class Install extends Migration
             'ua' => $this->string(),
             'isMobile' => $this->boolean(),
             'isBot' => $this->boolean(),
-            'processing' => $this->boolean()->defaultValue(0),
+            'processingKey' => $this->string(32)->null(),
+            'urlHash' => $this->string(64)->null(),
             'pageLoadMs' => $this->integer(),
             'dateCreated' => $this->dateTime(),
             'dateUpdated' => $this->dateTime(),
             'uid' => $this->string(),
         ]);
+        $this->createIndex(null, PageHit::tableName(), 'processingKey');
+        $this->createIndex(null, PageHit::tableName(), 'urlHash');
+        $this->createIndex(null, PageStat::tableName(), 'urlHash');
     }
 
     /**
